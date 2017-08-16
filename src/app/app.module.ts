@@ -9,13 +9,17 @@ import { PostsDataService } from './posts/posts-data.service';
 import { HomeComponent } from './home/home.component';
 
 import { routing } from './app.routes';
+import { PostsListComponent } from './posts-list/posts-list.component';
+import { NewPostComponent } from './posts/new-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
     PostsComponent,
-    HomeComponent
+    HomeComponent,
+    PostsListComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
