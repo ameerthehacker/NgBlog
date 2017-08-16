@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { PostComponent } from './posts/post.component';
 import { PostsComponent } from './posts/posts.component';
 
+import { PostsDataService } from './posts/posts-data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,7 @@ import { PostsComponent } from './posts/posts.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [PostsDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
