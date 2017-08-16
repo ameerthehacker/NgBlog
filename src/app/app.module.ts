@@ -13,6 +13,8 @@ import { PostsListComponent } from './posts-list/posts-list.component';
 import { NewPostComponent } from './posts/new-post.component';
 
 import { PostsCrudGurad } from './posts/posts-crud.guard';
+import { PostDataGuard } from './posts/posts-data.guard';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { PostsCrudGurad } from './posts/posts-crud.guard';
     BrowserModule,
     routing
   ],
-  providers: [PostsDataService, PostsCrudGurad],
+  providers: [PostsDataService, PostsCrudGurad, PostDataGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
