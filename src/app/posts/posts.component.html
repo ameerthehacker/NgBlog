@@ -1,0 +1,19 @@
+<div class="col s8">
+    <app-post (postClicked) = "postClicked($event)" *ngFor = "let post of posts" [post] = "post"></app-post>
+</div>
+<div *ngIf="clickedPost" class="col s4">
+    <div class="row">
+        <div class="col s12">
+            <h4>{{ clickedPost.title }}</h4>
+            <div class="divider"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <img [src]="clickedPost.image" class="responsive-img" alt="">
+            <p class="flow-text">
+                {{ clickedPost.body }}
+            </p>
+        </div>
+    </div> 
+</div>
