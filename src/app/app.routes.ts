@@ -4,7 +4,8 @@ import { HomeComponent } from './home/home.component'
 
 const APP_ROUTES: Route[] = [
     { 'path': '', 'component': HomeComponent },
-    { 'path': 'posts', 'component': PostsComponent }
+    { 'path': 'posts', 'component': PostsComponent },   
+    { 'path': 'posts/:id', 'component': PostsComponent }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

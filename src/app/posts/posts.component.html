@@ -1,5 +1,5 @@
 <div class="col s8">
-    <app-post (postClicked) = "postClicked($event)" *ngFor = "let post of posts" [post] = "post"></app-post>
+    <app-post *ngFor = "let post of posts" [post] = "post"></app-post>
 </div>
 <div *ngIf="clickedPost" class="col s4">
     <div class="row">

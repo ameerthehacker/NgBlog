@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="card-action">
-      <a href="#" (click) = "postClicked($event)">View Post</a>
+      <a [routerLink] = "['/posts', post.id]">View Post</a>
     </div>
   </div>
 </div>

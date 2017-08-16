@@ -10,17 +10,10 @@ export class PostComponent implements OnInit {
 
   @Input('post')
   private post: Post;
-  @Output('postClicked')
-  private clicked = new EventEmitter<Post>();
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  postClicked(evt){
-    evt.preventDefault();
-    this.clicked.emit(this.post);
   }
 
 }

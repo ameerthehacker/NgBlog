@@ -1,3 +1,13 @@
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a [routerLink] = "['/']" class="brand-logo"><i class="fa fa-rocket"></i> NgBlog</a>
+            <ul class="right">
+                <li><a [routerLink] = "['posts']">Posts</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
 <div class="container">
     <div class="row">
         <router-outlet></router-outlet>                       
