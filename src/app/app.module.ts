@@ -6,15 +6,20 @@ import { PostComponent } from './posts/post.component';
 import { PostsComponent } from './posts/posts.component';
 
 import { PostsDataService } from './posts/posts-data.service';
+import { HomeComponent } from './home/home.component';
+
+import { routing } from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
-    PostsComponent
+    PostsComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing
   ],
   providers: [PostsDataService],
   bootstrap: [AppComponent]
