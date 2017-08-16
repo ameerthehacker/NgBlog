@@ -12,6 +12,8 @@ import { routing } from './app.routes';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { NewPostComponent } from './posts/new-post.component';
 
+import { PostsCrudGurad } from './posts/posts-crud.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,7 @@ import { NewPostComponent } from './posts/new-post.component';
     BrowserModule,
     routing
   ],
-  providers: [PostsDataService],
+  providers: [PostsDataService, PostsCrudGurad],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
