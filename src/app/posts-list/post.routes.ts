@@ -6,6 +6,6 @@ import { Routes } from '@angular/router';
 
 export const POST_ROUTES: Routes = [
     { 'path': '', 'component': PostsComponent },    
-    { 'path': 'new', 'component': NewPostComponent, canActivate: [PostsCrudGurad], canDeactivate: [PostDataGuard] },    
+    { 'path': 'new', 'component': NewPostComponent, canDeactivate: [PostDataGuard] },    
     { 'path': ':id', 'component': PostsComponent }
 ]

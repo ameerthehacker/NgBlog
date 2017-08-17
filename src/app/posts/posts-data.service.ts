@@ -20,6 +20,9 @@ export class PostsDataService {
     });
     return post;
   }
+  public addPost(post: Post){
+    this.posts.push(post);
+  }
 
   constructor() { }
 
