@@ -7,18 +7,32 @@
             <form (ngSubmit) = "onSubmit(f)" #f="ngForm">
                 <div class="input-field">
                     <label>Title</label>
-                    <input type="text" name="title" ngModel  required>
+                    <input #title = "ngModel" type="text" name="title" ngModel  required>
+                    <div *ngIf = "!title.valid">
+                        <span class="error">Title field is required</span>
+                    </div>
                 </div>
                 <div class="input-field">
                     <label>Body</label>
-                    <textarea class="materialize-textarea" name="body" ngModel rows="10" required></textarea>
+                    <textarea #body = "ngModel" class="materialize-textarea" name="body" ngModel rows="10" required></textarea>
+                    <div *ngIf = "!body.valid">
+                        <span class="error">Body field is required</span>
+                    </div>
                 </div>
                 <div class="input-field">
                     <label>Image</label>
-                    <input type="text" name="image" ngModel required>
+                    <input #image = "ngModel" type="text" name="image" ngModel required>
+                    <div *ngIf = "!image.valid">
+                        <span class="error">Image field is required</span>
+                    </div>
                 </div>
+                <label>Privacy</label>                
+                <div *ngFor = "let policy of policies">
+                    <input class="with-gap" ngModel type="radio" [id] = "policy.value" [value] = "policy.value" name = "policies">   
+                    <label [for] = "policy.value">{{ policy.key }}</label>   
+                </div>            
                 <div class="input-field">
-                    <button type="submit" class="btn green">Submit</button>
+                    <button type="submit" class="btn green" [disabled] = "!f.valid">Submit</button>
                 </div>
             </form>
         </div>

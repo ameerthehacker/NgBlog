@@ -8,7 +8,9 @@ import { PostsDataService } from './posts-data.service';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
-  styles: []
+  styles: [
+    ".error { color: red; font-size: x-small }"
+  ]
 })
 export class NewPostComponent implements OnInit, ComponentCanDeactivate {
 
@@ -16,6 +18,10 @@ export class NewPostComponent implements OnInit, ComponentCanDeactivate {
 
   constructor(private postDataService: PostsDataService) { }
 
+  policies = [
+    { key: "Public", value: "public" }, 
+    { key: "Private", value: "private" }    
+  ];
   ngOnInit() {
   }
   canDeactivate(): Observable<boolean> | boolean{
@@ -33,6 +39,7 @@ export class NewPostComponent implements OnInit, ComponentCanDeactivate {
       image: form.value.image
     }
     this.postDataService.addPost(post);
+    console.log(form.value);
   }
 
 }
