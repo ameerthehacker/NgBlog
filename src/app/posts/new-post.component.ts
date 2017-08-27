@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentCanDeactivate } from './posts-data.guard';
 import { Observable } from 'rxjs/Rx';
-import { NgForm } from '@angular/forms'
+import { NgForm, FormGroup, FormArray, FormControl, Validators } from '@angular/forms'
 import { Post } from './post';
 import { PostsDataService } from './posts-data.service';
 
@@ -13,16 +13,28 @@ import { PostsDataService } from './posts-data.service';
   ]
 })
 export class NewPostComponent implements OnInit, ComponentCanDeactivate {
-
+  
   done:boolean = false;
+  myForm: FormGroup;
+  
+  ngOnInit() {
+    this.myForm = new FormGroup({
+      'title': new FormControl('New Title', [Validators.required, Validators.minLength(10), this.titleValidator]),
+      'body': new FormControl('New Content', Validators.required),      
+      'image': new FormControl('Empty Image', Validators.required),
+      'tags': new FormArray([
+        new FormControl('', Validators.required)
+      ])
+    });
+  }
 
   constructor(private postDataService: PostsDataService) { }
-
-  policies = [
-    { key: "Public", value: "public" }, 
-    { key: "Private", value: "private" }    
-  ];
-  ngOnInit() {
+  
+  get tags() {
+    return (<FormArray>this.myForm.get('tags')).controls;
+  }
+  onAddTag(){
+    this.tags.push(new FormControl('', Validators.required))
   }
   canDeactivate(): Observable<boolean> | boolean{
     if(!this.done){
@@ -30,16 +42,15 @@ export class NewPostComponent implements OnInit, ComponentCanDeactivate {
     }
     return true;
   }
-  onSubmit(form: NgForm){
-    this.done = true;  
-    let post: Post = {
-      id: this.postDataService.getPosts().length.toString(),
-      title: form.value.title,
-      body: form.value.body,
-      image: form.value.image
-    }
-    this.postDataService.addPost(post);
-    console.log(form.value);
+  onSubmit(){
+    console.log(this.myForm);
   }
-
+  titleValidator(control: FormControl){
+    if(control.value == 'test'){
+      return { error: true };
+    }
+    else{
+      return null;
+    }
+  }
 }

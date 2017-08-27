@@ -4,35 +4,27 @@
             <div class="card-title center-align">
                 New Post
             </div>
-            <form (ngSubmit) = "onSubmit(f)" #f="ngForm">
+            <form [formGroup] = "myForm" (ngSubmit)="onSubmit()">
                 <div class="input-field">
                     <label>Title</label>
-                    <input #title = "ngModel" type="text" name="title" ngModel  required>
-                    <div *ngIf = "!title.valid">
-                        <span class="error">Title field is required</span>
-                    </div>
+                    <input formControlName = "title" type="text" name="title">
                 </div>
                 <div class="input-field">
                     <label>Body</label>
-                    <textarea #body = "ngModel" class="materialize-textarea" name="body" ngModel rows="10" required></textarea>
-                    <div *ngIf = "!body.valid">
-                        <span class="error">Body field is required</span>
-                    </div>
+                    <textarea formControlName = "body" class="materialize-textarea" name="body" rows="10"></textarea>
                 </div>
                 <div class="input-field">
                     <label>Image</label>
-                    <input #image = "ngModel" type="text" name="image" ngModel required>
-                    <div *ngIf = "!image.valid">
-                        <span class="error">Image field is required</span>
+                    <input formControlName = "image" type="text" name="image">
+                </div>                       
+                <div class="input-field" formArrayName="tags">
+                    <div *ngFor="let tag of tags; let i = index">
+                        <input placeholder="Tag" type="text" formControlName="{{ i }}">
                     </div>
-                </div>
-                <label>Privacy</label>                
-                <div *ngFor = "let policy of policies">
-                    <input class="with-gap" ngModel type="radio" [id] = "policy.value" [value] = "policy.value" name = "policies">   
-                    <label [for] = "policy.value">{{ policy.key }}</label>   
-                </div>            
+                    <button type="button" (click) = "onAddTag()" class="btn btn-small green">Add</button>
+                </div>   
                 <div class="input-field">
-                    <button type="submit" class="btn green" [disabled] = "!f.valid">Submit</button>
+                    <button type="submit" [disabled] = "!myForm.valid" class="btn green">Submit</button>
                 </div>
             </form>
         </div>
