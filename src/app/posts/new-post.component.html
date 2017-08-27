@@ -18,7 +18,7 @@
                     <input formControlName = "image" type="text" name="image">
                 </div>                       
                 <div class="input-field" formArrayName="tags">
-                    <div *ngFor="let tag of tags; let i = index">
+                    <div *ngFor="let tag of tags.controls; let i = index">
                         <input placeholder="Tag" type="text" formControlName="{{ i }}">
                     </div>
                     <button type="button" (click) = "onAddTag()" class="btn btn-small green">Add</button>

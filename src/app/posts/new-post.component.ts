@@ -31,7 +31,8 @@ export class NewPostComponent implements OnInit, ComponentCanDeactivate {
   constructor(private postDataService: PostsDataService) { }
   
   get tags() {
-    return (<FormArray>this.myForm.get('tags')).controls;
+    return (<FormArray>this.myForm.get('tags'));
+  
   }
   onAddTag(){
     this.tags.push(new FormControl('', Validators.required))
@@ -43,8 +44,17 @@ export class NewPostComponent implements OnInit, ComponentCanDeactivate {
     return true;
   }
   onSubmit(){
-    console.log(this.myForm);
+    let newPost: Post = {
+      id: '5',
+      title: this.myForm.value.title,
+      body: this.myForm.value.body,
+      image: this.myForm.value.image,
+      tags: this.myForm.value.tags
+    };
+    this.postDataService.addPost(newPost);
+    this.done = true;
   }
+  // Custom validator
   titleValidator(control: FormControl){
     if(control.value == 'test'){
       return { error: true };

@@ -14,6 +14,10 @@
             <p class="flow-text">
                 {{ clickedPost.body }}
             </p>
+            <ul class="collection with-header" *ngIf = "clickedPost.tags.length!=0">
+                <li class="collection-header">Tags</li>
+                <li class="collection-item" *ngFor = "let tag of clickedPost.tags">{{ tag }}</li>
+            </ul>
         </div>
     </div> 
 </div>
